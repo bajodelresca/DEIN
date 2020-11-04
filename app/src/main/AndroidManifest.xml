@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ListActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Musec.NoActionBar" >
 
