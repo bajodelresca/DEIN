@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.musec" >
+    package="com.example.musec">
 
     <application
         android:allowBackup="true"
@@ -8,8 +8,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Musec" >
-        <activity android:name=".Intro" android:theme="@style/Theme.Musec.NoActionBar" >
+        android:theme="@style/Theme.Musec">
+        <activity
+            android:name=".FormActivity"
+            android:label="@string/title_activity_form"
+            android:theme="@style/Theme.Musec.NoActionBar"></activity>
+        <activity
+            android:name=".Intro"
+            android:theme="@style/Theme.Musec.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,9 +25,7 @@
         <activity
             android:name=".ListActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Musec.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.Musec.NoActionBar"></activity>
     </application>
 
 </manifest>
