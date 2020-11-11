@@ -1,7 +1,11 @@
-package com.example.musec;
+package com.example.musec.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.musec.Interfaces.ListInterface;
+import com.example.musec.Presenters.ListPresenter;
+import com.example.musec.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -13,7 +17,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity implements ListInterface.View {
+    private ListInterface.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +26,14 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        presenter=new ListPresenter(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                presenter.onClickFloatingButton();
+
             }
         });
     }
@@ -52,5 +58,12 @@ public class ListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void StartFormActivity() {
+        Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        startActivity(intent);
+
     }
 }
