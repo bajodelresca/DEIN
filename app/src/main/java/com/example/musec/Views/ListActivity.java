@@ -1,5 +1,6 @@
 package com.example.musec.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.musec.Interfaces.ListInterface;
@@ -17,22 +18,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ListActivity extends AppCompatActivity implements ListInterface.View {
-private ListInterface.Presenter presenter;
+    private ListInterface.Presenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        presenter=new ListPresenter(view:this);
+        presenter=new ListPresenter(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 presenter.onClickFloatingButton();
+
             }
         });
     }
@@ -60,7 +61,9 @@ private ListInterface.Presenter presenter;
     }
 
     @Override
-    public void startFormActivity() {
+    public void StartFormActivity() {
+        Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        startActivity(intent);
 
     }
 }
