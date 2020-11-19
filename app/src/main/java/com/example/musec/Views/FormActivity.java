@@ -30,7 +30,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+            getSupportActionBar().setTitle(R.string._NuevoInstrumento);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

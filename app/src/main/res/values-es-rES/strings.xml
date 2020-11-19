@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Musec</string>
+    <string name="_NuevoInstrumento">Nuevo Instrumento</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="action_order">Ordenar</string>
+    <string name="action_help">Ayuda</string>
+    <string name="action_about">Sobre nosotros</string>
+    <string name="NameDEV">Nombre: Adrián Manuel Reina Morales</string>
+    <string name="ContactDEV">Contacto: reina.adrian898@gmail.com</string>
+    <string name="DEV">Desarrollador</string>
+    <string name="title_activity_about">Sobre Musec</string>
+
+</resources>

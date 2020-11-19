@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Musec">
         <activity
+            android:name=".Views.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.Musec.NoActionBar"></activity>
+        <activity
             android:name=".Views.FormActivity"
             android:label="@string/title_activity_form"
-            android:theme="@style/Theme.Musec.NoActionBar"></activity>
+            android:theme="@style/Theme.Musec.NoActionBar" />
         <activity
             android:name=".Views.Intro"
             android:theme="@style/Theme.Musec.NoActionBar">

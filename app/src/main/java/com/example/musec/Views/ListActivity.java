@@ -56,12 +56,37 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_search) {
+            presenter.onClickSearchButton();
+            return true;
+        }
+        if (id == R.id.action_about) {
+            presenter.onClickAboutButton();
+            return true;
+        }
+        if (id == R.id.action_help) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void StartFormActivity() {
+        Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void StartAboutActivity() {
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void StartSearchActivity() {
         Intent intent = new Intent(getApplicationContext(), FormActivity.class);
         startActivity(intent);
 
