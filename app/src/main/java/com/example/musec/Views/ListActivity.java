@@ -87,7 +87,7 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
 
     @Override
     public void StartSearchActivity() {
-        Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
         startActivity(intent);
 
     }

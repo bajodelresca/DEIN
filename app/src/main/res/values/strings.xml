@@ -18,4 +18,10 @@
     <string name="NameDEV">Name: Adrián Manuel Reina Morales</string>
     <string name="ContactDEV">Contact: reina.adrian898@gmail.com</string>
     <string name="DEV">Developer</string>
+    <string name="title_activity_search">Search</string>
+    <string name="incluye_funda">Incluye funda</string>
+    <string name="precio">Precio</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="cuando_lo_adquiriste">¿Cuando lo adquiriste?</string>
+    <string name="qu_vas_a_vender">¿Qué vas a vender?</string>
 </resources>

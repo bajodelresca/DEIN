@@ -10,5 +10,6 @@
     <string name="ContactDEV">Contacto: reina.adrian898@gmail.com</string>
     <string name="DEV">Desarrollador</string>
     <string name="title_activity_about">Sobre Musec</string>
+    <string name="title_activity_search">Buscar</string>
 
 </resources>
