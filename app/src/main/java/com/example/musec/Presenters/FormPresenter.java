@@ -1,6 +1,11 @@
 package com.example.musec.Presenters;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
 
 import com.example.musec.Interfaces.FormInterface;
 import com.example.musec.Interfaces.ListInterface;
@@ -48,6 +53,40 @@ public class FormPresenter implements FormInterface.Presenter {
     @Override
     public void clicAcceptDelete() {
         view.CloseFormActivity();
+    }
+
+
+
+    @Override
+    public void PermissionGranted() {
+        view.selectPicture();
+    }
+
+    @Override
+    public void PermissionDenied() {
+        view.showError();
+    }
+
+    @Override
+    public void onClickImage() {
+        int WriteExternalStoragePermission = ContextCompat.checkSelfPermission(MyApplication.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Log.d("FormPresenter", "WRITE_EXTERNAL_STORAGE Permission: " + WriteExternalStoragePermission);
+
+        if (WriteExternalStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            // Permiso denegado
+            // A partir de Marshmallow (6.0) se pide aceptar o rechazar el permiso en tiempo de ejecución
+            // En las versiones anteriores no es posible hacerlo
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                view.IntentChooser();
+                // Una vez que se pide aceptar o rechazar el permiso se ejecuta el método "onRequestPermissionsResult" para manejar la respuesta
+                // Si el usuario marca "No preguntar más" no se volverá a mostrar este diálogo
+            } else {
+                view.showError();
+            }
+        } else {
+            // Permiso aceptado
+            view.selectPicture();
+        }
     }
 }
 

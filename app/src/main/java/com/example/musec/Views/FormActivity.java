@@ -1,11 +1,13 @@
 package com.example.musec.Views;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,12 +18,14 @@ import com.example.musec.Interfaces.FormInterface;
 import com.example.musec.Models.InstrumentEntity;
 import com.example.musec.Presenters.FormPresenter;
 import com.example.musec.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,7 +65,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private Uri uri;
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
-    private ConstraintLayout constraintLayoutMainActivity;
+    private ConstraintLayout constraintLayoutFormActivity;
 
 
 
@@ -76,6 +80,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        constraintLayoutFormActivity = findViewById(R.id.Guardar);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -242,13 +248,16 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
+
         ImageView buttonGallery = (ImageView) findViewById(R.id.imageView4);
         buttonGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectPicture();
+                presenter.onClickImage();
             }
         });
+
+        deleteIMG();
 
         myContext = this;
         // Obtener la fecha actual
@@ -294,7 +303,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
 
     }
-    private void selectPicture(){
+    @Override
+    public void selectPicture(){
         // Se le pide al sistema una imagen del dispositivo
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -312,13 +322,14 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             case (REQUEST_CAPTURE_IMAGE):
                 if (resultCode == Activity.RESULT_OK) {
                     // Se carga la imagen desde un objeto URI al imageView
-                    ImageView imageView = findViewById(R.id.imageView);
+                    ImageView imageView = findViewById(R.id.imageView4);
                     imageView.setImageURI(uri);
 
                     // Se le envía un broadcast a la Galería para que se actualice
                     Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                     mediaScanIntent.setData(uri);
                     sendBroadcast(mediaScanIntent);
+
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     // Se borra el archivo temporal
                     File file = new File(uri.getPath());
@@ -345,11 +356,36 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                         Bitmap bmp = BitmapFactory.decodeStream(imageStream);
 
                         // Se carga el Bitmap en el ImageView
-                        ImageView imageView = findViewById(R.id.imageView);
-                        imageView.setImageBitmap(bmp);
+                        Bitmap imageScaled = Bitmap.createScaledBitmap(bmp, 200, 200, false);
+                        ImageView imageView = findViewById(R.id.imageView4);
+                        imageView.setImageBitmap(imageScaled);
                     }
                 }
                 break;
+        }
+    }
+    @Override
+    public void IntentChooser(){
+        ActivityCompat.requestPermissions(FormActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+    }
+
+    @Override
+    public void showError(){
+        Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    presenter.PermissionGranted();
+                } else {
+                    presenter.PermissionDenied();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
@@ -410,6 +446,17 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void deleteIMG(){
+        Button deleteimg = (Button) findViewById(R.id.button5);
+        deleteimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView buttonGallery = findViewById(R.id.imageView4);
+                buttonGallery.setImageBitmap(null);
+            }
+        });
     }
 
     @Override
