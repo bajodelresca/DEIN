@@ -36,4 +36,11 @@
         <item name="android:typeface">monospace</item>
         <item name="android:fontFamily">verdana</item>
     </style>
+    <style name="spinner">
+        <item name="android:background">@android:drawable/btn_dropdown</item>
+        <item name="android:fontFamily">verdana</item>
+    </style>
+    <style name="Form" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">verdana</item>
+    </style>
 </resources>

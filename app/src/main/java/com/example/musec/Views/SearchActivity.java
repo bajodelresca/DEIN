@@ -30,6 +30,7 @@ import com.example.musec.R;
 import java.util.Calendar;
 
 public class SearchActivity extends AppCompatActivity implements SearchInterface.View {
+    String TAG = "Musec/SearchActivity";
     private SearchInterface.Presenter presenter;
     Context myContext;
     EditText editTextDate;
@@ -88,7 +89,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         // Asignar la fecha a un campo de texto
-                        editTextDate.setText(String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year));
+                        editTextDate.setText(String.valueOf(day) + "/" + String.valueOf(month+1) + "/" + String.valueOf(year));
                     }
                 },Year, Month, Day);
                 // Mostrar el calendario
@@ -124,5 +125,40 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     @Override
     public void CloseSearchActivity() {
         finish();
+    }
+    @Override
+    protected void onStart() {
+        Log.d(TAG, "Starting onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "Starting onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "Starting onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(TAG, "Starting onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d(TAG, "Starting onRestart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "Starting onDestroy");
+        super.onDestroy();
     }
 }

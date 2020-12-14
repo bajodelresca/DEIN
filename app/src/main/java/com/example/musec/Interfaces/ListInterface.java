@@ -5,10 +5,12 @@ public interface ListInterface {
         void StartFormActivity();
         void StartAboutActivity();
         void StartSearchActivity();
+        void StartFormActivity(String id);
         }
     public interface Presenter{
         void onClickFloatingButton();
         void onClickAboutButton();
         void onClickSearchButton();
+        void onClickRecyclerViewItem(String id);
     }
 }

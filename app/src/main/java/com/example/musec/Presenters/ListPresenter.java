@@ -23,4 +23,9 @@ public class ListPresenter implements ListInterface.Presenter {
     public void onClickSearchButton() {
         view.StartSearchActivity();
     }
+
+    @Override
+    public void onClickRecyclerViewItem(String id) {
+        view.StartFormActivity(id);
+    }
 }

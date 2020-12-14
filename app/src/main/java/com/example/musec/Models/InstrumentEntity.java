@@ -4,13 +4,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InstrumentEntity {
+    private String id;
     private String Name;
     private String Description;
     private String Price;
     private String Date;
+    private String Image;
     public InstrumentEntity() {
        }
-
+    public String getId() {
+        return id;
+    }
     public String getName() {
         return Name;
     }
@@ -22,6 +26,9 @@ public class InstrumentEntity {
     }
     public String getDate() {
         return Date;
+    }
+    public String getImage() {
+        return Image;
     }
 
     public boolean setName(String name) {
@@ -59,5 +66,12 @@ public class InstrumentEntity {
         } else {
             return false;
         }
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+    public void setId(String Id) {
+        id = Id;
     }
 }

@@ -10,5 +10,6 @@ public interface FormInterface {
         void onClickSaveButton();
         public String getError(int error_code);
         void onClickDeleteButton();
+        void clicAcceptDelete();
     }
 }

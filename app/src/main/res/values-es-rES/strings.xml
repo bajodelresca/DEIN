@@ -11,7 +11,7 @@
     <string name="DEV">Desarrollador</string>
     <string name="title_activity_about">Sobre Musec</string>
     <string name="title_activity_search">Buscar</string>
-    <string name="ErrorName">Introduzca un fomato valido</string>
+    <string name="ErrorName">Nombre debe empezar con "a"</string>
     <string name="ErrorDescription">Introduzca minimo 5 caracteres</string>
     <string name="ErrorPrice">Introduzca numeros 0-9</string>
     <string name="ErrorDate">Introduzca un formato valido: dd/mm/aaaa</string>
@@ -20,5 +20,7 @@
     <string name="ErrorAdd">Rellene el campo</string>
     <string name="Add">Añadir</string>
     <string name="deletequest">¿Estas seguro de eliminar?</string>
+    <string name="_10_resultados">10 resultados</string>
+    <string name="choose_picture">¿Que imagen quiere elegir?</string>
 
 </resources>

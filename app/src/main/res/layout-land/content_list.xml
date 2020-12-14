@@ -7,12 +7,13 @@
     android:background="#000000">
 
     <TextView
+        style="@style/CodeFont"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
         android:layout_marginBottom="30dp"
-        android:text="10 resultados"
+        android:text="@string/_10_resultados"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"

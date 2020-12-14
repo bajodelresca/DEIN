@@ -24,13 +24,15 @@
     <string name="descripci_n">Descripción</string>
     <string name="cuando_lo_adquiriste">¿Cuando lo adquiriste?</string>
     <string name="qu_vas_a_vender">¿Qué vas a vender?</string>
-    <string name="ErrorName">Error in Name format</string>
-    <string name="ErrorDescription">Error in Description format</string>
-    <string name="ErrorPrice">Error in Price format</string>
-    <string name="ErrorDate">Error in Date format</string>
+    <string name="ErrorName">Name must start with "a"</string>
+    <string name="ErrorDescription">Enter at least 5 characters</string>
+    <string name="ErrorPrice">Enter only numberst</string>
+    <string name="ErrorDate">Enter valid format: dd/mm/aaaa</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="ErrorAdd">Fild in the field</string>
     <string name="Add">Add</string>
     <string name="deletequest">Are you sure to delete?</string>
+    <string name="_10_resultados">10 results</string>
+    <string name="choose_picture">What image do you want to choose?</string>
 </resources>

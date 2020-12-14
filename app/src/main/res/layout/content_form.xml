@@ -40,14 +40,16 @@
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="175dp"
-                android:layout_height="28dp"
+                style="@style/spinner"
+                android:layout_width="181dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="400dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
+                style="@style/Form"
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,9 +75,11 @@
                 android:layout_width="66dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="670dp"
+                android:layout_marginBottom="20dp"
                 android:background="#000000"
                 android:backgroundTint="#090909"
                 app:icon="@android:drawable/ic_menu_save"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,24 +88,28 @@
                 android:id="@+id/delete"
                 android:layout_width="66dp"
                 android:layout_height="55dp"
+                android:layout_marginStart="86dp"
                 android:layout_marginTop="670dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="#000000"
                 android:backgroundTint="#090909"
                 app:icon="@android:drawable/ic_menu_delete"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button4"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="66dp"
                 android:layout_height="55dp"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="670dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginBottom="20dp"
                 android:background="#000000"
                 android:backgroundTint="#090909"
                 app:icon="@android:drawable/ic_menu_close_clear_cancel"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button4"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,6 +123,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/PriceET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,6 +142,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/DescriptionET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,6 +161,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/DateET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,6 +180,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/NameET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -202,10 +214,10 @@
                 android:id="@+id/ButtonAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="478dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="400dp"
                 android:background="#00FFFFFF"
-                app:layout_constraintStart_toEndOf="@+id/checkBox2"
+                app:layout_constraintStart_toEndOf="@+id/spinner"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_add" />
         </androidx.constraintlayout.widget.ConstraintLayout>

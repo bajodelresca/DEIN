@@ -51,8 +51,9 @@
 
             <Spinner
                 android:id="@+id/spinner"
+                style="@style/spinner"
                 android:layout_width="175dp"
-                android:layout_height="28dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="175dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +61,16 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="139dp"
-                android:layout_height="0dp"
+                style="@style/Form"
+                android:layout_width="155dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="400dp"
+                android:layout_marginBottom="20dp"
                 android:background="#000000"
                 android:backgroundTint="#090909"
                 android:text="Buscar"
                 app:icon="@android:drawable/ic_menu_search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +86,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/dateeET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Form"
                     android:id="@+id/NameET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
