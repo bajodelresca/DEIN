@@ -371,7 +371,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     @Override
     public void showError(){
-        Snackbar.make(constraintLayoutFormActivity, getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
     }
 
     @Override

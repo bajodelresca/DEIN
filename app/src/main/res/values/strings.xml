@@ -36,4 +36,6 @@
     <string name="_10_resultados">10 results</string>
     <string name="choose_picture">What image do you want to choose?</string>
     <string name="write_permission_denied">Permission denied</string>
+    <string name="Borrar">Deleted successfully</string>
+    <string name="ErrorBorrar">Error while deleting</string>
 </resources>

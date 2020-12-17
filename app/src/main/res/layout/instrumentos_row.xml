@@ -10,25 +10,34 @@
         android:id="@+id/ImageViewid"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"/>
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/TextView_name"
+        style="@style/About"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ImageViewid"
         app:layout_constraintLeft_toRightOf="@id/ImageViewid"
         app:layout_constraintTop_toTopOf="@id/ImageViewid"
-        tools:text="@tools:sample/last_names"/>
+        tools:text="@tools:sample/last_names" />
 
     <TextView
         android:id="@+id/TextView_description"
+        style="@style/About"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/ImageViewid"
         app:layout_constraintLeft_toRightOf="@id/ImageViewid"
         app:layout_constraintTop_toTopOf="@id/ImageViewid"

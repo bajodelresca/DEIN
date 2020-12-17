@@ -12,5 +12,6 @@ public interface ListInterface {
         void onClickAboutButton();
         void onClickSearchButton();
         void onClickRecyclerViewItem(String id);
+        public String getError(int error_code);
     }
 }
