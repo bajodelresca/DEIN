@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -27,13 +28,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -41,6 +45,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -66,6 +72,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
     private ConstraintLayout constraintLayoutFormActivity;
+    ImageView img;
 
 
 
@@ -80,6 +87,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CheckBox check = (CheckBox) findViewById((R.id.checkBox2));
         constraintLayoutFormActivity = findViewById(R.id.Guardar);
 
         super.onCreate(savedInstanceState);
@@ -102,13 +110,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         }
         presenter=new FormPresenter(this);
 
-        Button save=(Button) findViewById(R.id.button4);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onClickSaveButton();
-            }
-        });
+
         instrument = new InstrumentEntity();
 
         nameET = findViewById(R.id.NameET);
@@ -246,6 +248,18 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                         .create()
                         .show();
             }
+
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                instrument.setState(estado.get(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
 
 
@@ -300,6 +314,34 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         }else{
             //Deshabilitar el botón eliminar
         }
+        img = (ImageView) findViewById(R.id.imageView4);
+        Button save=(Button) findViewById(R.id.button4);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(instrument.setName(nameET.getText().toString())&&
+                        instrument.setDescription(descriptionET.getText().toString())&&
+                        instrument.setPrice(priceET.getText().toString())&&
+                        instrument.setDate(dateET.getText().toString())&&
+                        spinner.getSelectedItemPosition()!=0){
+                    instrument.setBag(check.isChecked());
+                    instrument.setState(spinner.getSelectedItem().toString());
+                    if(img!=null&&img.getDrawable()!=null){
+                        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+                        if(bitmap!=null){
+                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                            byte[] byteArray = byteArrayOutputStream.toByteArray();
+                            String fotoEnBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                            instrument.setImage(fotoEnBase64);
+                        }
+                    }
+                }
+                presenter.onClickSaveButton(instrument);
+                Log.d("prueba",instrument.toString());
+
+            }
+        });
 
 
     }

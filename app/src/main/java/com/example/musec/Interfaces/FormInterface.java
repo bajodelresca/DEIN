@@ -1,5 +1,7 @@
 package com.example.musec.Interfaces;
 
+import com.example.musec.Models.InstrumentEntity;
+
 public interface FormInterface {
     public interface View{
         void CloseFormActivity();
@@ -10,7 +12,7 @@ public interface FormInterface {
 
     }
     public interface Presenter{
-        void onClickSaveButton();
+        void onClickSaveButton(InstrumentEntity instrument);
         public String getError(int error_code);
         void onClickDeleteButton();
         void clicAcceptDelete();

@@ -9,16 +9,26 @@ import androidx.core.content.ContextCompat;
 
 import com.example.musec.Interfaces.FormInterface;
 import com.example.musec.Interfaces.ListInterface;
+import com.example.musec.Models.InstrumentEntity;
+import com.example.musec.Models.InstrumentModel;
 import com.example.musec.R;
 import com.example.musec.Views.MyApplication;
 
 public class FormPresenter implements FormInterface.Presenter {
     private FormInterface.View view;
-    public FormPresenter (FormInterface.View view) {this.view=view;}
+    private InstrumentModel instrumentModel;
+    public FormPresenter (FormInterface.View view) {this.view=view;
+    this.instrumentModel=new InstrumentModel();}
 
     @Override
-    public void onClickSaveButton() {
-        view.CloseFormActivity();
+    public void onClickSaveButton(InstrumentEntity instrument) {
+        if (instrumentModel.insert(instrument)){
+            view.CloseFormActivity();
+        } else {
+
+        }
+
+
     }
     @Override
     public String getError(int error_code) {
