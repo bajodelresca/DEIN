@@ -1,14 +1,20 @@
 package com.example.musec.Presenters;
 
 import com.example.musec.Interfaces.ListInterface;
+import com.example.musec.Models.InstrumentEntity;
+import com.example.musec.Models.InstrumentModel;
 import com.example.musec.R;
 import com.example.musec.Views.MyApplication;
 
+import java.util.ArrayList;
+
 public class ListPresenter implements ListInterface.Presenter {
     private ListInterface.View view;
+    private InstrumentModel instrumentModel;
 
     public ListPresenter(ListInterface.View view) {
         this.view = view;
+        this.instrumentModel=new InstrumentModel();
     }
 
     @Override
@@ -43,5 +49,10 @@ public class ListPresenter implements ListInterface.Presenter {
         }
             return error_msg;
         }
+
+    @Override
+    public ArrayList<InstrumentEntity> getAllSummarize() {
+        return instrumentModel.getAllSummarize();
     }
+}
 

@@ -72,7 +72,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private Context myContext;
     private ConstraintLayout constraintLayoutFormActivity;
-    ImageView img;
 
 
 
@@ -83,15 +82,19 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private Calendar calendar ;
     private DatePickerDialog datePickerDialog ;
     private  int Year, Month, Day ;
+    ImageView img;
+    CheckBox checked;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CheckBox check = (CheckBox) findViewById((R.id.checkBox2));
-        constraintLayoutFormActivity = findViewById(R.id.Guardar);
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+        checked = (CheckBox) findViewById(R.id.checkBox2);
+        constraintLayoutFormActivity = findViewById(R.id.Guardar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -263,6 +266,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         });
 
 
+
         ImageView buttonGallery = (ImageView) findViewById(R.id.imageView4);
         buttonGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -322,12 +326,14 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 if(instrument.setName(nameET.getText().toString())&&
                         instrument.setDescription(descriptionET.getText().toString())&&
                         instrument.setPrice(priceET.getText().toString())&&
-                        instrument.setDate(dateET.getText().toString())&&
-                        spinner.getSelectedItemPosition()!=0){
-                    instrument.setBag(check.isChecked());
-                    instrument.setState(spinner.getSelectedItem().toString());
-                    if(img!=null&&img.getDrawable()!=null){
-                        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+                        instrument.setDate(dateET.getText().toString())){
+
+                    instrument.setBag(checked.isChecked());
+
+
+
+                    if(buttonGallery!=null&&buttonGallery.getDrawable()!=null){
+                        Bitmap bitmap = ((BitmapDrawable) buttonGallery.getDrawable()).getBitmap();
                         if(bitmap!=null){
                             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -336,6 +342,16 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                             instrument.setImage(fotoEnBase64);
                         }
                     }
+
+                    instrument.setState(spinner.getSelectedItem().toString());
+
+
+
+
+
+
+
+
                 }
                 presenter.onClickSaveButton(instrument);
                 Log.d("prueba",instrument.toString());

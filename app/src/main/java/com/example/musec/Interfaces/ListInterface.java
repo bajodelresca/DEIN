@@ -1,5 +1,9 @@
 package com.example.musec.Interfaces;
 
+import com.example.musec.Models.InstrumentEntity;
+
+import java.util.ArrayList;
+
 public interface ListInterface {
     public interface View{
         void StartFormActivity();
@@ -13,5 +17,6 @@ public interface ListInterface {
         void onClickSearchButton();
         void onClickRecyclerViewItem(String id);
         public String getError(int error_code);
+        ArrayList<InstrumentEntity> getAllSummarize();
     }
 }

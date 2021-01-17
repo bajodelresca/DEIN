@@ -22,7 +22,7 @@ public class MyApplication extends Application {
         RealmConfiguration config = new RealmConfiguration
                 .Builder()
                 //.name("demoandroid.realm")
-                .directory(getExternalFilesDirs(null)[1])
+               // .directory(getExternalFilesDirs(null)[1])
                 .allowQueriesOnUiThread(true)
                 .allowWritesOnUiThread(true)
                 .build();
