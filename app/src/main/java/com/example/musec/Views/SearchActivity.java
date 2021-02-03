@@ -2,6 +2,7 @@ package com.example.musec.Views;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.musec.Interfaces.FormInterface;
@@ -27,16 +28,20 @@ import android.widget.Spinner;
 
 import com.example.musec.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class SearchActivity extends AppCompatActivity implements SearchInterface.View {
     String TAG = "Musec/SearchActivity";
     private SearchInterface.Presenter presenter;
     Context myContext;
+    EditText editTextName;
     EditText editTextDate;
     ImageButton buttonDate;
     Calendar calendar ;
     DatePickerDialog datePickerDialog ;
+    Button goSearch;
+    Spinner spinner;
     int Year, Month, Day ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +66,19 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         }
 
         presenter=new SearchPresenter(this);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayList<String> estado =presenter.getStats();
+        ArrayList<String> stat = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, stat);
+        stat.add(0,"Estado");
 
-        Button search=(Button) findViewById(R.id.button4);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onClickSaveButton();
-            }
-        });
+        for(String i: estado){
+            stat.add(i);
+        }
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
         myContext = this;
         // Obtener la fecha actual
         calendar = Calendar.getInstance();
@@ -77,6 +87,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         Day = calendar.get(Calendar.DAY_OF_MONTH);
 
         editTextDate = (EditText)findViewById(R.id.dateeET);
+        editTextName = (EditText)findViewById(R.id.NameET);
 
         // Definir la acción del botón para abrir el calendario
         buttonDate = (ImageButton)findViewById(R.id.dateeButton);
@@ -96,9 +107,13 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
                 datePickerDialog.show();
             }
         });
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        String[] estado = {"Nuevo","Usado"};
-        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, estado));
+        Button search=(Button) findViewById(R.id.button4);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onClickSaveButton();
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,7 +130,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        
+
         if (id == R.id.action_help) {
             return true;
         }
@@ -124,6 +139,11 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     }
     @Override
     public void CloseSearchActivity() {
+        Intent i = getIntent();
+        i.putExtra("Name", editTextName.getText().toString());
+        i.putExtra("state", spinner.getSelectedItemId());
+        i.putExtra("Date", editTextDate.getText().toString());
+        setResult(RESULT_OK, i);
         finish();
     }
     @Override

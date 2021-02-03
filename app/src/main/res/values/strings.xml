@@ -19,11 +19,11 @@
     <string name="ContactDEV">Contact: reina.adrian898@gmail.com</string>
     <string name="DEV">Developer</string>
     <string name="title_activity_search">Search</string>
-    <string name="incluye_funda">Incluye funda</string>
-    <string name="precio">Precio</string>
-    <string name="descripci_n">Descripción</string>
-    <string name="cuando_lo_adquiriste">¿Cuando lo adquiriste?</string>
-    <string name="qu_vas_a_vender">¿Qué vas a vender?</string>
+    <string name="incluye_funda">" Includes cover"</string>
+    <string name="precio">Price</string>
+    <string name="descripci_n">Description</string>
+    <string name="cuando_lo_adquiriste">" When did you get it?"</string>
+    <string name="qu_vas_a_vender">" What are you going to sell?"</string>
     <string name="ErrorName">Name must start with "a"</string>
     <string name="ErrorDescription">Enter at least 5 characters</string>
     <string name="ErrorPrice">Enter only numberst</string>
@@ -38,4 +38,6 @@
     <string name="write_permission_denied">Permission denied</string>
     <string name="Borrar">Deleted successfully</string>
     <string name="ErrorBorrar">Error while deleting</string>
+    <string name="Errorinsert">" Insert failed, check fields"</string>
+    <string name="results">Results</string>
 </resources>

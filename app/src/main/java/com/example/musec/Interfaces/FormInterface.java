@@ -2,6 +2,9 @@ package com.example.musec.Interfaces;
 
 import com.example.musec.Models.InstrumentEntity;
 
+import java.util.ArrayList;
+
+
 public interface FormInterface {
     public interface View{
         void CloseFormActivity();
@@ -17,7 +20,11 @@ public interface FormInterface {
         void onClickDeleteButton();
         void clicAcceptDelete();
         void onClickImage();
+        public ArrayList<String> getStats();
         void PermissionGranted();
+        void delete(InstrumentEntity instru);
         void PermissionDenied();
+        public InstrumentEntity getbyid(String id);
+        ArrayList<InstrumentEntity> getAllSummarize();
     }
 }

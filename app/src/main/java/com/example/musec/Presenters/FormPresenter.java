@@ -14,11 +14,13 @@ import com.example.musec.Models.InstrumentModel;
 import com.example.musec.R;
 import com.example.musec.Views.MyApplication;
 
+import java.util.ArrayList;
+
 public class FormPresenter implements FormInterface.Presenter {
     private FormInterface.View view;
     private InstrumentModel instrumentModel;
     public FormPresenter (FormInterface.View view) {this.view=view;
-    this.instrumentModel=new InstrumentModel();}
+        this.instrumentModel=new InstrumentModel();}
 
     @Override
     public void onClickSaveButton(InstrumentEntity instrument) {
@@ -49,6 +51,9 @@ public class FormPresenter implements FormInterface.Presenter {
             case 5:
                 error_msg = MyApplication.getContext().getResources().getString(R.string.ErrorAdd);
                 break;
+            case 6:
+                error_msg = MyApplication.getContext().getResources().getString(R.string.Errorinsert);
+                break;
             default:
                 error_msg = "";
         }
@@ -70,6 +75,11 @@ public class FormPresenter implements FormInterface.Presenter {
     @Override
     public void PermissionGranted() {
         view.selectPicture();
+    }
+
+    @Override
+    public void delete(InstrumentEntity instru) {
+        instrumentModel.delete(instru);
     }
 
     @Override
@@ -97,6 +107,20 @@ public class FormPresenter implements FormInterface.Presenter {
             // Permiso aceptado
             view.selectPicture();
         }
+    }
+
+    @Override
+    public ArrayList<String> getStats() {
+        return instrumentModel.getStats();
+    }
+
+    @Override
+    public ArrayList<InstrumentEntity> getAllSummarize() {
+        return instrumentModel.getAllSummarize();
+    }
+    @Override
+    public InstrumentEntity getbyid(String id) {
+        return instrumentModel.getbyid(id);
     }
 }
 

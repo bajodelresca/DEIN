@@ -66,6 +66,13 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private TextInputEditText dateET;
     private InstrumentEntity instrument;
     private String id;
+    private String Name;
+    private String Description;
+    private String Price;
+    private String Date;
+    private String Image;
+    public String state;
+    public boolean bag;
     private static final int REQUEST_CAPTURE_IMAGE = 200;
     private static final int REQUEST_SELECT_IMAGE = 201;
     private Uri uri;
@@ -205,8 +212,12 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayList<String> estado =new ArrayList();
-        estado.add("Usado");
-        estado.add("Nuevo");
+        ArrayList<InstrumentEntity> iEnt=presenter.getAllSummarize();
+        for(InstrumentEntity i: iEnt){
+            if(!estado.contains(presenter.getbyid(i.getId()).getState())){
+                estado.add(presenter.getbyid(i.getId()).getState());
+            }
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, estado);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -312,11 +323,26 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
         id=getIntent().getStringExtra("id");
+
         if(id!=null){
-            nameET.setText(id);
+            InstrumentEntity instru=presenter.getbyid(id);
+            instrument.setId(id);
+
+            nameET.setText(instru.getName());
+            descriptionET.setText(instru.getDescription());
+            dateET.setText(instru.getDate());
+            priceET.setText(instru.getPrice());
+            checked.setChecked(instru.isBag());
+            Image=instru.getImage();
+            byte[] decodedString = Base64.decode(Image, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            buttonGallery.setImageBitmap(decodedByte);
+            spinner.setSelection(adapter.getPosition(instru.getState()));
+
             //Recupero la info de esa entidad
         }else{
-            //Deshabilitar el botón eliminar
+            Button delete2 = (Button) findViewById(R.id.delete);
+            delete2.setEnabled(false);
         }
         img = (ImageView) findViewById(R.id.imageView4);
         Button save=(Button) findViewById(R.id.button4);
@@ -344,6 +370,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     }
 
                     instrument.setState(spinner.getSelectedItem().toString());
+                    presenter.onClickSaveButton(instrument);
+                    Log.d("prueba",instrument.toString());
 
 
 
@@ -351,9 +379,12 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
 
 
+
+                }else {
+                    Toast.makeText(getApplicationContext(),presenter.getError(6),Toast.LENGTH_LONG).show();
 
                 }
-                presenter.onClickSaveButton(instrument);
+
                 Log.d("prueba",instrument.toString());
 
             }
@@ -489,6 +520,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 presenter.clicAcceptDelete();
+                presenter.delete(instrument);
                 // Toast.makeText(getApplicationContext(),"Yes button Clicked", Toast.LENGTH_LONG).show();
                 Log.i("Code2care ", "Yes button Clicked!");
             }

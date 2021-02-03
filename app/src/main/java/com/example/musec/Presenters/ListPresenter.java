@@ -33,6 +33,16 @@ public class ListPresenter implements ListInterface.Presenter {
     }
 
     @Override
+    public InstrumentEntity getbyid(String id) {
+        return instrumentModel.getbyid(id);
+    }
+
+    @Override
+    public void delete(InstrumentEntity instru) {
+        instrumentModel.delete(instru);
+    }
+
+    @Override
     public void onClickRecyclerViewItem(String id) {
         view.StartFormActivity(id);
     }
@@ -47,12 +57,24 @@ public class ListPresenter implements ListInterface.Presenter {
                 error_msg = MyApplication.getContext().getResources().getString(R.string.ErrorBorrar);
                 break;
         }
-            return error_msg;
-        }
+        return error_msg;
+    }
 
     @Override
     public ArrayList<InstrumentEntity> getAllSummarize() {
         return instrumentModel.getAllSummarize();
     }
+
+    @Override
+    public ArrayList<String> getStats() {
+        return instrumentModel.getStats();
+    }
+
+    @Override
+    public ArrayList<InstrumentEntity> getItemsFilter(String name, String date, String state) {
+        return instrumentModel.getWithFilter(name, date, state);
+    }
 }
+
+
 

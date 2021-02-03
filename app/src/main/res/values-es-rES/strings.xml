@@ -25,5 +25,12 @@
     <string name="write_permission_denied">Permiso denegado</string>
     <string name="Borrar">Borrado correctamente</string>
     <string name="ErrorBorrar">Error en el borrado</string>
+    <string name="Errorinsert">Error al insertar, revise los campos</string>
+    <string name="results">Resultados</string>
+    <string name="qu_vas_a_vender">¿Qué vas a vender?</string>
+    <string name="cuando_lo_adquiriste">¿Cuando lo adquiriste?</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="precio">Precio</string>
+    <string name="incluye_funda">Incluye funda</string>
 
 </resources>

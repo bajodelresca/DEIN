@@ -10,13 +10,17 @@ public interface ListInterface {
         void StartAboutActivity();
         void StartSearchActivity();
         void StartFormActivity(String id);
-        }
+    }
     public interface Presenter{
         void onClickFloatingButton();
         void onClickAboutButton();
         void onClickSearchButton();
+        public InstrumentEntity getbyid(String id);
+        void delete(InstrumentEntity instru);
         void onClickRecyclerViewItem(String id);
         public String getError(int error_code);
         ArrayList<InstrumentEntity> getAllSummarize();
+        public ArrayList<String> getStats();
+        ArrayList<InstrumentEntity> getItemsFilter(String name, String date, String state);
     }
 }
