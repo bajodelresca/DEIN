@@ -39,5 +39,5 @@
     <string name="Borrar">Deleted successfully</string>
     <string name="ErrorBorrar">Error while deleting</string>
     <string name="Errorinsert">" Insert failed, check fields"</string>
-    <string name="results">Results</string>
+    <string name="results">" Results"</string>
 </resources>

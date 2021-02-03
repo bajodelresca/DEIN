@@ -26,7 +26,7 @@
     <string name="Borrar">Borrado correctamente</string>
     <string name="ErrorBorrar">Error en el borrado</string>
     <string name="Errorinsert">Error al insertar, revise los campos</string>
-    <string name="results">Resultados</string>
+    <string name="results">" Resultados"</string>
     <string name="qu_vas_a_vender">¿Qué vas a vender?</string>
     <string name="cuando_lo_adquiriste">¿Cuando lo adquiriste?</string>
     <string name="descripci_n">Descripción</string>
