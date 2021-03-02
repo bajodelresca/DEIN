@@ -334,6 +334,7 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
             return true;
         }
         if (id == R.id.action_help) {
+            presenter.onClickHelpButton();
             return true;
         }
 
@@ -362,6 +363,13 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
     public void StartSearchActivity() {
         Log.d(TAG, "Starting SearchActivity");
         Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void StartHelpActivity() {
+        Log.d(TAG, "Starting HelpActivity");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
         startActivityForResult(intent, 0);
     }
 

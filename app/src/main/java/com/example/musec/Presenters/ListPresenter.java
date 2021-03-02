@@ -33,6 +33,11 @@ public class ListPresenter implements ListInterface.Presenter {
     }
 
     @Override
+    public void onClickHelpButton() {
+        view.StartHelpActivity();
+    }
+
+    @Override
     public InstrumentEntity getbyid(String id) {
         return instrumentModel.getbyid(id);
     }

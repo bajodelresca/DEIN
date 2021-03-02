@@ -9,12 +9,14 @@ public interface ListInterface {
         void StartFormActivity();
         void StartAboutActivity();
         void StartSearchActivity();
+        void StartHelpActivity();
         void StartFormActivity(String id);
     }
     public interface Presenter{
         void onClickFloatingButton();
         void onClickAboutButton();
         void onClickSearchButton();
+        void onClickHelpButton();
         public InstrumentEntity getbyid(String id);
         void delete(InstrumentEntity instru);
         void onClickRecyclerViewItem(String id);
