@@ -370,6 +370,7 @@ public class ListActivity extends AppCompatActivity implements ListInterface.Vie
     public void StartHelpActivity() {
         Log.d(TAG, "Starting HelpActivity");
         Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "list");
         startActivityForResult(intent, 0);
     }
 

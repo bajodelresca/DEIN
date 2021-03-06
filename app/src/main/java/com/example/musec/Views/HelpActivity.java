@@ -59,7 +59,16 @@ public class HelpActivity extends AppCompatActivity {
                 onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
             }
         });
-        mWebview.loadUrl("https://alberto34315.github.io/RingBox/");
+        String help= getIntent().getStringExtra("help");
+        if(help.equals("form")){
+            mWebview.loadUrl("https://bajodelresca.github.io/DEIN/form.html");
+        }else if(help.equals("list")){
+            mWebview.loadUrl("https://bajodelresca.github.io/DEIN/list.html");
+        }else if(help.equals("search")){
+            mWebview.loadUrl("https://bajodelresca.github.io/DEIN/search.html");
+        }else{
+            mWebview.loadUrl("https://bajodelresca.github.io/DEIN/index.html/");
+        }
         //   setContentView(mWebview);
 
     }
