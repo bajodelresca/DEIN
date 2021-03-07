@@ -12,6 +12,7 @@ public interface FormInterface {
         void selectPicture();
         void showError();
         void IntentChooser();
+        void StartHelpActivity();
 
     }
     public interface Presenter{
@@ -19,6 +20,7 @@ public interface FormInterface {
         public String getError(int error_code);
         void onClickDeleteButton();
         void clicAcceptDelete();
+        void onClickHelpButton();
         void onClickImage();
         public ArrayList<String> getStats();
         void PermissionGranted();

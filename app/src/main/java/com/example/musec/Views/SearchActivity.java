@@ -132,6 +132,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         //noinspection SimplifiableIfStatement
 
         if (id == R.id.action_help) {
+            presenter.onClickHelpButton();
             return true;
         }
 
@@ -146,6 +147,15 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
         setResult(RESULT_OK, i);
         finish();
     }
+
+    @Override
+    public void StartHelpActivity() {
+        Log.d(TAG, "Starting HelpActivity");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "search");
+        startActivityForResult(intent, 0);
+    }
+
     @Override
     protected void onStart() {
         Log.d(TAG, "Starting onStart");

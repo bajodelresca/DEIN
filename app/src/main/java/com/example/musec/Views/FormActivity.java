@@ -459,6 +459,14 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     }
 
     @Override
+    public void StartHelpActivity() {
+        Log.d(TAG, "Starting HelpActivity");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "form");
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
     public void showError(){
         Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
     }
@@ -501,6 +509,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         //noinspection SimplifiableIfStatement
 
         if (id == R.id.action_help) {
+            presenter.onClickHelpButton();
             return true;
         }
 

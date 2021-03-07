@@ -22,4 +22,8 @@ public class SearchPresenter implements SearchInterface.Presenter {
     public ArrayList<String> getStats() {
         return instrumentModel.getStats();
     }
+    @Override
+    public void onClickHelpButton() {
+        view.StartHelpActivity();
+    }
 }

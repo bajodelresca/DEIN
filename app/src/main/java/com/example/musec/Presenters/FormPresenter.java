@@ -64,6 +64,10 @@ public class FormPresenter implements FormInterface.Presenter {
     public void onClickDeleteButton() {
         view.alertDelete();
     }
+    @Override
+    public void onClickHelpButton() {
+        view.StartHelpActivity();
+    }
 
     @Override
     public void clicAcceptDelete() {
