@@ -1,4 +1,4 @@
-# Mused
+# Musec
 Aplicación desarrollada para la asignatura Desarrollo de Interfaces, la app se basa en un CRUD en el cual puedes gestionar datos de instrumentos
 
 ## Inicio 
